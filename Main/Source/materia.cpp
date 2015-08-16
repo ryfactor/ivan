@@ -59,6 +59,11 @@ material* material::TakeDipVolumeAway()
     return MotherEntity->RemoveMaterial(this);
 }
 
+material* material::TakeAllVolumeAway()
+{
+  return MotherEntity->RemoveMaterial(this);
+}
+
 void material::Save(outputfile& SaveFile) const
 {
   SaveFile << static_cast<ushort>(GetType());
@@ -351,11 +356,11 @@ truth material::CauseExplosion(character* Idiot, long Damage)
     if(Idiot->IsPlayer())
         ADD_MESSAGE("Suddenly you are engulfed in flames!");
     else if(Idiot->CanBeSeenByPlayer())
-      ADD_MESSAGE("%s steps in %s.", Idiot->CHAR_NAME(DEFINITE), CHAR_NAME(INDEFINITE));
+      ADD_MESSAGE("%s is suddenly engulfed in flames!", Idiot->CHAR_NAME(DEFINITE));
     else if(Square->CanBeSeenByPlayer(true))
       ADD_MESSAGE("Something explodes!");
     
-    Square->GetLevel()->Explosion(0, "killed in a gas explosion", Square->GetPos(), Damage);
+    Square->GetLevel()->Explosion(0, "killed in a chemical explosion", Square->GetPos(), Damage);
     return true;
   }
 
@@ -364,7 +369,7 @@ truth material::CauseExplosion(character* Idiot, long Damage)
 
 truth material::ExplosiveEffect(character* Enemy)
 {
-  return CauseExplosion(Enemy, Max<long>(GetVolume() / 6, 10));
+  return CauseExplosion(Enemy, GetTotalExplosivePower());
 }
 
 const materialdatabase* material::GetDataBase(int Config)

@@ -110,6 +110,15 @@ truth meleeweapon::HitEffect(character* Enemy, character* Hitter, v2, int BodyPa
 
 void meleeweapon::DipInto(liquid* Liquid, character* Dipper)
 {
+  if(IsBurning() && Liquid->ExplosiveEffect(Dipper))
+  {
+    room* Room = GetRoom();
+
+    if(Room)
+      Room->HostileAction(Dipper);
+    return;
+  }
+
   if(Dipper->IsPlayer())
     ADD_MESSAGE("%s is now covered with %s.", CHAR_NAME(DEFINITE), Liquid->GetName(false, false).CStr());
 
@@ -119,6 +128,15 @@ void meleeweapon::DipInto(liquid* Liquid, character* Dipper)
 
 void armor::DipInto(liquid* Liquid, character* Dipper)
 {
+  if(IsBurning() && Liquid->ExplosiveEffect(Dipper))
+  {
+    room* Room = GetRoom();
+
+    if(Room)
+      Room->HostileAction(Dipper);
+    return;
+  }
+
   if(Dipper->IsPlayer())
     ADD_MESSAGE("%s is now covered with %s.", CHAR_NAME(DEFINITE), Liquid->GetName(false, false).CStr());
 

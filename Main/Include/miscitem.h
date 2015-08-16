@@ -113,6 +113,7 @@ ITEM(can, materialcontainer)
   virtual truth IsDippable(ccharacter*) const { return !SecondaryMaterial; }
   virtual truth IsDipDestination(ccharacter*) const;
   virtual liquid* CreateDipLiquid();
+  virtual liquid* CreateAllDipLiquid();
   virtual truth AllowSpoil() const { return false; } // temporary
   virtual truth Spoils() const { return false; } // temporary
   virtual truth HasBetterVersion() const { return !SecondaryMaterial; }
@@ -137,6 +138,7 @@ ITEM(potion, materialcontainer)
   virtual item* BetterVersion() const;
   virtual void DipInto(liquid*, character*);
   virtual liquid* CreateDipLiquid();
+  virtual liquid* CreateAllDipLiquid();
   virtual truth IsDippable(ccharacter*) const { return !SecondaryMaterial; }
   virtual void Break(character*, int);
   virtual truth IsDipDestination(ccharacter*) const;

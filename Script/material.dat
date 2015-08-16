@@ -1402,6 +1402,7 @@ gas
     BreatheMessage = "Ugh. It smells horrible here.";
     CategoryFlags = Base|IS_SCARY;
     InteractionFlags = Base|CAN_EXPLODE;
+    ExplosivePower = 168000;
   }
 
   Config MUSTARD_GAS;

@@ -244,6 +244,7 @@ class item : public object
   virtual truth HitEffect(character*, character*, v2, int, int, truth) { return false; }
   virtual void DipInto(liquid*, character*) { }
   virtual liquid* CreateDipLiquid() { return 0; }
+  virtual liquid* CreateAllDipLiquid() { return 0; }
   virtual item* BetterVersion() const { return 0; }
   virtual int GetOfferValue(int) const;
   virtual void Fly(character*, int, int);

@@ -259,6 +259,16 @@ liquid* potion::CreateDipLiquid()
   return static_cast<liquid*>(GetSecondaryMaterial()->TakeDipVolumeAway());
 }
 
+liquid* can::CreateAllDipLiquid()
+{
+  return static_cast<liquid*>(GetSecondaryMaterial()->TakeAllVolumeAway());
+}
+
+liquid* potion::CreateAllDipLiquid()
+{
+  return static_cast<liquid*>(GetSecondaryMaterial()->TakeAllVolumeAway());
+}
+
 void potion::DipInto(liquid* Liquid, character* Dipper)
 {
   /* Add alchemy */
@@ -424,6 +434,15 @@ truth scroll::ReceiveDamage(character*, int Damage, int Type, int)
 
 void scroll::DipInto(liquid* Liquid, character* Dipper)
 {
+  if(IsBurning() && Liquid->ExplosiveEffect(Dipper))
+  {
+    room* Room = GetRoom();
+
+    if(Room)
+      Room->HostileAction(Dipper);
+    return;
+  }
+
   if(Dipper->IsPlayer())
     ADD_MESSAGE("%s is now covered with %s.", CHAR_NAME(DEFINITE), Liquid->GetName(false, false).CStr());
 
@@ -463,6 +482,15 @@ truth holybook::ReceiveDamage(character*, int Damage, int Type, int)
 
 void holybook::DipInto(liquid* Liquid, character* Dipper)
 {
+  if(IsBurning() && Liquid->ExplosiveEffect(Dipper))
+  {
+    room* Room = GetRoom();
+
+    if(Room)
+      Room->HostileAction(Dipper);
+    return;
+  }
+
   if(Dipper->IsPlayer())
     ADD_MESSAGE("%s is now covered with %s.", CHAR_NAME(DEFINITE), Liquid->GetName(false, false).CStr());
 

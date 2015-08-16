@@ -697,7 +697,11 @@ truth commandsystem::Dip(character* Char)
 	  return false;
 	}
 
-	Item->DipInto(DipTo->CreateDipLiquid(), Char);
+	if(Item->IsBurning() && DipTo->GetSecondaryMaterial()->IsExplosive())
+	  Item->DipInto(DipTo->CreateAllDipLiquid(), Char);
+	else
+	  Item->DipInto(DipTo->CreateDipLiquid(), Char);
+
 	return true;
       }
     }
