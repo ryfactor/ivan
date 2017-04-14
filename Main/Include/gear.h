@@ -206,6 +206,7 @@ ITEM(bodyarmor, armor)
   virtual long GetPrice() const;
   virtual truth IsBodyArmor(ccharacter*) const { return true; }
   virtual truth IsInCorrectSlot(int) const;
+  virtual int GetInElasticityPenalty(int) const { return 0; }
  protected:
   virtual cchar* GetBreakVerb() const;
   virtual truth AddAdjective(festring&, truth) const;
