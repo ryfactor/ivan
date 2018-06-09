@@ -276,13 +276,16 @@ locationAQ
 
 locationAR
 {
-  BitmapPos = 0, 64;
-  NameStem = "empty area";
-  UsesLongArticle = true;
-  AttachedDungeon = EMPTY_AREA;
+  BitmapPos = 64, 64;
+  NameStem = "vastly walled city, with a great iron gate";
+  UsesLongArticle = false;
+  AttachedDungeon = UROK;
   AttachedArea = 0;
-  CanBeGenerated = false;
+  CanBeGenerated = true;
   NativeGTerrainType = STEPPE;
+  RevealEnvironmentInitially = true;
+  HideLocationInitially = false;
+  CanBeOnAnyTerrain = true;
 }
 
 locationAS
