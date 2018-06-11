@@ -420,6 +420,8 @@
 #define SOIL (POWDER_ID + 8)
 #define ASH (POWDER_ID + 9)
 #define SOOT (POWDER_ID + 10)
+#define UMBER_SAND (POWDER_ID + 11)
+#define BURNT_SIENNA_SAND (POWDER_ID + 12)
 
 #define IRON_ALLOY_ID (7 << 12)
 
@@ -672,6 +674,8 @@
 #define SNOW_TERRAIN 6
 #define DARK_GRASS_TERRAIN 7
 #define SAND_TERRAIN 8
+#define UROK_CITY_TERRAIN 9
+#define UROK_BADLANDS_TERRAIN 10
 
 #define POOL 1
 #define UNDERGROUND_LAKE 2

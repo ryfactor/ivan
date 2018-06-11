@@ -6221,6 +6221,34 @@ powder
     CategoryFlags = Base|IS_GOLEM_MATERIAL;
   }
 
+  Config UMBER_SAND;
+  {
+    StrengthValue = 2;
+    ConsumeType = CT_MINERAL;
+    Density = 1600;
+    Color = rgb16(176, 144, 80);
+    NameStem = "pale yellow sand";
+    AdjectiveStem = "pale yellow, sandy";
+    Flexibility = 40;
+    AttachedGod = SILVA;
+    HardenedMaterial = SAND_STONE;
+    CategoryFlags = Base;
+  }
+
+  Config BURNT_SIENNA_SAND;
+  {
+    StrengthValue = 2;
+    ConsumeType = CT_MINERAL;
+    Density = 1600;
+    Color = rgb16(100, 40, 20);
+    NameStem = "dark orange sand";
+    AdjectiveStem = "dark orange, sandy";
+    Flexibility = 40;
+    AttachedGod = SILVA;
+    HardenedMaterial = SAND_STONE;
+    CategoryFlags = Base;
+  }
+
   Config RED_SAND;
   {
     StrengthValue = 2;

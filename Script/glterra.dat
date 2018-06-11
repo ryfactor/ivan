@@ -121,6 +121,22 @@ solidterrain /* glterrain-> */
     NameSingular = "ground";
     BitmapPos = 32, 32;
   }
+
+  Config UROK_CITY_TERRAIN;
+  {
+    OKVisualEffects = MIRROR|FLIP|ROTATE;
+    MainMaterialConfig == UMBER_SAND;
+    NameSingular = "ground";
+    BitmapPos = 32, 32;
+  }
+
+  Config UROK_BADLANDS_TERRAIN;
+  {
+    OKVisualEffects = MIRROR|FLIP|ROTATE;
+    MainMaterialConfig == BURNT_SIENNA_SAND;
+    NameSingular = "ground";
+    BitmapPos = 32, 32;
+  }
 }
 
 liquidterrain /* glterrain-> */

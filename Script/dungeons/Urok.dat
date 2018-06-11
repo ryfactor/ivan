@@ -27,7 +27,7 @@ Dungeon UROK;
 
   Level 0;
   {
-    FillSquare = solidterrain(GRASS_TERRAIN), 0;
+    FillSquare = solidterrain(UROK_CITY_TERRAIN), 0;
     Size = 42, 26;
     GenerateMonsters = false;
     Rooms = 0;
@@ -44,7 +44,7 @@ Dungeon UROK;
     EnchantmentMinusChanceDelta = 0;
     EnchantmentPlusChanceBase = 0;
     EnchantmentPlusChanceDelta = 0;
-    BackGroundType = GREEN_FRACTAL;
+    BackGroundType = YELLOW_FRACTAL;
     EarthquakesAffectTunnels = true;
     AudioPlayList = 
     {
