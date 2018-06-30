@@ -1550,6 +1550,16 @@ truth character::TryMove(v2 MoveVector, truth Important, truth Run, truth* pbWai
         return true;
       }
 
+      if((GetPos().Y == 0) && (Direction == NORTH))
+        ADD_MESSAGE("You are going north.");
+      if((GetPos().X == (game::GetCurrentLevel()->GetXSize() - 1)) && (Direction == EAST))
+        ADD_MESSAGE("You are going east.");
+      if((GetPos().Y == (game::GetCurrentLevel()->GetYSize() - 1)) && (Direction == SOUTH))
+        ADD_MESSAGE("You are going south.");
+      if((GetPos().X == 0) && (Direction == WEST))
+        ADD_MESSAGE("You are going west.");
+      
+
       if(game::TryTravel(WORLD_MAP, WORLD_MAP, game::GetCurrentDungeonIndex()))
         return true;
     }
