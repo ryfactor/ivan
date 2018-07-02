@@ -125,6 +125,7 @@ Dungeon XINROCH_TOMB;
     Rooms = 5:8;
     Items = 0;
     IsOnGround = true;
+    LeaveToWorldMap = true;
     TeamDefault = XINROCH_TOMB_ENTRY_TEAM;
     LOSModifier = 48;
     IgnoreDefaultSpecialSquares = true;

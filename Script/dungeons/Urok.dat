@@ -33,6 +33,11 @@ Dungeon UROK;
     Rooms = 0;
     Items = 0;
     IsOnGround = true;
+    LeaveToWorldMap = true;
+    /*AttachedAreaNorth = 8;*/
+    /*AttachedAreaEast = 5;*/
+    /*AttachedAreaSouth = 1;*/
+    /*AttachedAreaWest = 4;*/
     TeamDefault = MONSTER_TEAM;
     LOSModifier = 48;
     IgnoreDefaultSpecialSquares = false;

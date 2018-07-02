@@ -3142,3 +3142,25 @@ void level::GasExplosion(gas* GasMaterial, lsquare* Square, character* Terrorist
     }
   }
 }
+
+truth level::LeaveToWorldMap() const
+{
+  return *LevelScript->LeaveToWorldMap();
+}
+
+int level::AttachedAreaNorth() const
+{
+  return *LevelScript->GetAttachedAreaNorth();
+}
+int level::AttachedAreaEast() const
+{
+  return *LevelScript->GetAttachedAreaEast();
+}
+int level::AttachedAreaSouth() const
+{
+  return *LevelScript->GetAttachedAreaSouth();
+}
+int level::AttachedAreaWest() const
+{
+  return *LevelScript->GetAttachedAreaWest();
+}

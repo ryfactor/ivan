@@ -1559,9 +1559,31 @@ truth character::TryMove(v2 MoveVector, truth Important, truth Run, truth* pbWai
       if((GetPos().X == 0) && (Direction == WEST))
         ADD_MESSAGE("You are going west.");
       
-
-      if(game::TryTravel(WORLD_MAP, WORLD_MAP, game::GetCurrentDungeonIndex()))
-        return true;
+      if(GetLevel()->LeaveToWorldMap())
+      {
+        if(game::TryTravel(WORLD_MAP, WORLD_MAP, game::GetCurrentDungeonIndex()))
+          return true;
+      }
+      else if((GetPos().Y == 0) && (Direction == NORTH))
+      {
+        if(game::TryTravel(game::GetCurrentDungeonIndex(), GetLevel()->AttachedAreaNorth(), STAIRS_UP + SOUTH))
+          return true;
+      }
+      else if((GetPos().X == (game::GetCurrentLevel()->GetXSize() - 1)) && (Direction == EAST))
+      {
+        if(game::TryTravel(game::GetCurrentDungeonIndex(), GetLevel()->AttachedAreaEast(), STAIRS_UP + WEST))
+          return true;
+      }
+      else if((GetPos().Y == (game::GetCurrentLevel()->GetYSize() - 1)) && (Direction == SOUTH))
+      {
+        if(game::TryTravel(game::GetCurrentDungeonIndex(), GetLevel()->AttachedAreaSouth(), STAIRS_UP + NORTH))
+          return true;
+      }
+      else if((GetPos().X == 0) && (Direction == WEST))
+      {
+        if(game::TryTravel(game::GetCurrentDungeonIndex(), GetLevel()->AttachedAreaWest(), STAIRS_UP + EAST))
+          return true;
+      }
     }
 
     return false;

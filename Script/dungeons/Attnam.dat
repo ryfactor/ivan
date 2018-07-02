@@ -92,6 +92,7 @@ Dungeon ATTNAM;
     Rooms = 20:25;
     Items = 0;
     IsOnGround = true;
+    LeaveToWorldMap = true;
     TeamDefault = ATTNAM_TEAM;
     LOSModifier = 48;
     IgnoreDefaultSpecialSquares = false;

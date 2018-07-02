@@ -892,6 +892,11 @@ void levelscript::InitDataMap()
   INIT_ENTRY(EnterImage);
   INIT_ENTRY(EnterTextDisplacement);
   INIT_ENTRY(AudioPlayList);
+  INIT_ENTRY(LeaveToWorldMap);
+  INIT_ENTRY(AttachedAreaNorth);
+  INIT_ENTRY(AttachedAreaEast);
+  INIT_ENTRY(AttachedAreaSouth);
+  INIT_ENTRY(AttachedAreaWest);
 }
 
 void levelscript::ReadFrom(inputfile& SaveFile)

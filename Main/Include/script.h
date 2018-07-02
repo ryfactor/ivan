@@ -442,6 +442,11 @@ class levelscript : public scriptwithbase
   SCRIPT_MEMBER_WITH_BASE(festring, EnterImage);
   SCRIPT_MEMBER_WITH_BASE(v2, EnterTextDisplacement);
   SCRIPT_MEMBER_WITH_BASE(fearray<festring>, AudioPlayList);
+  SCRIPT_TRUTH_WITH_BASE(LeaveToWorldMap);
+  SCRIPT_MEMBER_WITH_BASE(int, AttachedAreaNorth);
+  SCRIPT_MEMBER_WITH_BASE(int, AttachedAreaEast);
+  SCRIPT_MEMBER_WITH_BASE(int, AttachedAreaSouth);
+  SCRIPT_MEMBER_WITH_BASE(int, AttachedAreaWest);
 };
 
 class dungeonscript : public script

@@ -33,6 +33,7 @@ Dungeon EMPTY_AREA;
     Rooms = 0;
     Items = 0;
     IsOnGround = true;
+    LeaveToWorldMap = true;
     TeamDefault = MONSTER_TEAM;
     LOSModifier = 48;
     IgnoreDefaultSpecialSquares = false;
