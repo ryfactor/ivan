@@ -1566,21 +1566,41 @@ truth character::TryMove(v2 MoveVector, truth Important, truth Run, truth* pbWai
       }
       else if((GetPos().Y == 0) && (Direction == NORTH))
       {
+        if(GetLevel()->AttachedAreaNorth() == WORLD_MAP)
+        {
+          if(game::TryTravel(WORLD_MAP, WORLD_MAP, game::GetCurrentDungeonIndex()))
+            return true;
+        }
         if(game::TryTravel(game::GetCurrentDungeonIndex(), GetLevel()->AttachedAreaNorth(), STAIRS_UP + SOUTH))
           return true;
       }
       else if((GetPos().X == (game::GetCurrentLevel()->GetXSize() - 1)) && (Direction == EAST))
       {
+        if(GetLevel()->AttachedAreaEast() == WORLD_MAP)
+        {
+          if(game::TryTravel(WORLD_MAP, WORLD_MAP, game::GetCurrentDungeonIndex()))
+            return true;
+        }
         if(game::TryTravel(game::GetCurrentDungeonIndex(), GetLevel()->AttachedAreaEast(), STAIRS_UP + WEST))
           return true;
       }
       else if((GetPos().Y == (game::GetCurrentLevel()->GetYSize() - 1)) && (Direction == SOUTH))
       {
+        if(GetLevel()->AttachedAreaSouth() == WORLD_MAP)
+        {
+          if(game::TryTravel(WORLD_MAP, WORLD_MAP, game::GetCurrentDungeonIndex()))
+            return true;
+        }
         if(game::TryTravel(game::GetCurrentDungeonIndex(), GetLevel()->AttachedAreaSouth(), STAIRS_UP + NORTH))
           return true;
       }
       else if((GetPos().X == 0) && (Direction == WEST))
       {
+        if(GetLevel()->AttachedAreaWest() == WORLD_MAP)
+        {
+          if(game::TryTravel(WORLD_MAP, WORLD_MAP, game::GetCurrentDungeonIndex()))
+            return true;
+        }
         if(game::TryTravel(game::GetCurrentDungeonIndex(), GetLevel()->AttachedAreaWest(), STAIRS_UP + EAST))
           return true;
       }
