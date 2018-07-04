@@ -21,12 +21,14 @@
 
 Dungeon UROK;
 {
-  Levels = 2;
+  Levels = 10;
   Description = "Urok";
   ShortDescription = "Uk";
 
-  Level 0;
+  Level 0; /*Urok City Gates*/
   {
+    Description = "Urok City Gates";
+    ShortDescription = "Urok Gates";
     FillSquare = solidterrain(UROK_CITY_TERRAIN), 0;
     Size = 75, 26;
     GenerateMonsters = false;
@@ -57,12 +59,12 @@ Dungeon UROK;
       "Empty.mid";
     }
 
-    Square, Pos 38,YSize - 1;
+    Square, Pos XSize/2,YSize - 1;
     {
       EntryIndex = STAIRS_UP;
     }
 
-    Square, Pos 38, 1;
+    Square, Pos XSize/2, 0;
     {
       EntryIndex = STAIRS_UP + NORTH;
     }
@@ -115,8 +117,10 @@ Dungeon UROK;
     }
   }
 
-  Level 1;
+  Level 1; /*Urok City*/
   {
+    Description = "Urok City";
+    ShortDescription = "Urok City";
     FillSquare = solidterrain(UROK_CITY_TERRAIN), 0;
     Size = 75, 26;
     GenerateMonsters = false;
@@ -124,10 +128,10 @@ Dungeon UROK;
     Items = 0;
     IsOnGround = true;
     LeaveToWorldMap = false;
-    AttachedAreaNorth = WORLD_MAP;
-    AttachedAreaEast = WORLD_MAP;
+    AttachedAreaNorth = 3;
+    AttachedAreaEast = NO_EXIT;
     AttachedAreaSouth = 0;
-    AttachedAreaWest = WORLD_MAP;
+    AttachedAreaWest = NO_EXIT;
     TeamDefault = MONSTER_TEAM;
     LOSModifier = 48;
     IgnoreDefaultSpecialSquares = false;
@@ -147,7 +151,739 @@ Dungeon UROK;
       "Empty.mid";
     }
 
-    Square, Pos 38,YSize - 1;
+    Square, Pos XSize/2,YSize - 1;
+    {
+      EntryIndex = STAIRS_UP + SOUTH;
+    }
+
+    Square, Pos XSize/4, 0;
+    {
+      EntryIndex = STAIRS_UP + NORTH;
+    }
+
+    Square, Random;
+    {
+      Items == beartrap { Team = MONSTER_TEAM; IsActive = false; }
+      Times = 0:3;
+    }
+
+    Square, Random;
+    {
+      Items == Random { Category = FOOD; }
+      Times = 1:2;
+    }
+
+    Square, Random NOT_IN_ROOM|HAS_NO_OTERRAIN;
+    {
+      OTerrain = boulder(1);
+      Times = 10;
+    }
+
+    Square, Random NOT_IN_ROOM|HAS_NO_OTERRAIN;
+    {
+      OTerrain = boulder(2);
+      Times = 10;
+    }
+
+    RoomDefault
+    {
+      Pos = 2:40,2:24;
+      Size = 4:6,4:6;
+      AltarPossible = false;
+      WallSquare = solidterrain(GRASS_TERRAIN), wall(BRICK_PRIMITIVE);
+      FloorSquare = solidterrain(GRASS_TERRAIN), 0;
+      DoorSquare = solidterrain(GRASS_TERRAIN), BALSA_WOOD door;
+      GenerateDoor = true;
+      DivineMaster = 0;
+      GenerateTunnel = false;
+      GenerateLanterns = false;
+      Type = ROOM_NORMAL;
+      GenerateFountains = false;
+      AllowLockedDoors = false;
+      AllowBoobyTrappedDoors = false;
+      Shape = ROUND_CORNERS;
+      IsInside = true;
+      GenerateWindows = true;
+      UseFillSquareWalls = false;
+      Flags = 0;
+    }
+  }
+
+  Level 2; /*Urok City Combat Grounds*/
+  {
+    Description = "Urok City Combat Arena";
+    ShortDescription = "Urok Arena";
+    FillSquare = solidterrain(UROK_CITY_TERRAIN), 0;
+    Size = 26, 26;
+    GenerateMonsters = false;
+    Rooms = 0;
+    Items = 0;
+    IsOnGround = true; /*false*/
+    LeaveToWorldMap = false;
+    AttachedAreaNorth = NO_EXIT;
+    AttachedAreaEast = NO_EXIT;
+    AttachedAreaSouth = NO_EXIT;
+    AttachedAreaWest = NO_EXIT;
+    TeamDefault = MONSTER_TEAM;
+    LOSModifier = 48;
+    IgnoreDefaultSpecialSquares = false;
+    AutoReveal = true;
+    CanGenerateBone = false;
+    DifficultyBase = 50;
+    DifficultyDelta = 0;
+    EnchantmentMinusChanceBase = -15;
+    EnchantmentMinusChanceDelta = 0;
+    EnchantmentPlusChanceBase = 0;
+    EnchantmentPlusChanceDelta = 0;
+    BackGroundType = YELLOW_FRACTAL;
+    EarthquakesAffectTunnels = true;
+    AudioPlayList = 
+    {
+      1,
+      "Empty.mid";
+    }
+/*Needs some entry*/
+/*
+    Square, Pos XSize,YSize - 1;
+    {
+      EntryIndex = STAIRS_UP + SOUTH;
+    }
+*/
+    Square, Random;
+    {
+      Items == beartrap { Team = MONSTER_TEAM; IsActive = false; }
+      Times = 0:3;
+    }
+
+    Square, Random;
+    {
+      Items == Random { Category = FOOD; }
+      Times = 1:2;
+    }
+
+    Square, Random NOT_IN_ROOM|HAS_NO_OTERRAIN;
+    {
+      OTerrain = boulder(1);
+      Times = 10;
+    }
+
+    Square, Random NOT_IN_ROOM|HAS_NO_OTERRAIN;
+    {
+      OTerrain = boulder(2);
+      Times = 10;
+    }
+
+    RoomDefault
+    {
+      Pos = 2:40,2:24;
+      Size = 4:6,4:6;
+      AltarPossible = false;
+      WallSquare = solidterrain(GRASS_TERRAIN), wall(BRICK_PRIMITIVE);
+      FloorSquare = solidterrain(GRASS_TERRAIN), 0;
+      DoorSquare = solidterrain(GRASS_TERRAIN), BALSA_WOOD door;
+      GenerateDoor = true;
+      DivineMaster = 0;
+      GenerateTunnel = false;
+      GenerateLanterns = false;
+      Type = ROOM_NORMAL;
+      GenerateFountains = false;
+      AllowLockedDoors = false;
+      AllowBoobyTrappedDoors = false;
+      Shape = ROUND_CORNERS;
+      IsInside = true;
+      GenerateWindows = true;
+      UseFillSquareWalls = false;
+      Flags = 0;
+    }
+  }
+
+  Level 3; /*Urok Badlands Central*/
+  {
+    Description = "Urok Badlands Central";
+    ShortDescription = "Urok Central";
+    FillSquare = solidterrain(UROK_BADLANDS_TERRAIN), 0;
+    Size = 26, 26;
+    GenerateMonsters = false;
+    Rooms = 0;
+    Items = 0;
+    IsOnGround = true;
+    LeaveToWorldMap = false;
+    AttachedAreaNorth = 8;
+    AttachedAreaEast = 5;
+    AttachedAreaSouth = 1;
+    AttachedAreaWest = 4;
+    TeamDefault = MONSTER_TEAM;
+    LOSModifier = 48;
+    IgnoreDefaultSpecialSquares = false;
+    AutoReveal = true;
+    CanGenerateBone = false;
+    DifficultyBase = 50;
+    DifficultyDelta = 0;
+    EnchantmentMinusChanceBase = -15;
+    EnchantmentMinusChanceDelta = 0;
+    EnchantmentPlusChanceBase = 0;
+    EnchantmentPlusChanceDelta = 0;
+    BackGroundType = YELLOW_FRACTAL;
+    EarthquakesAffectTunnels = true;
+    AudioPlayList = 
+    {
+      1,
+      "Empty.mid";
+    }
+
+    Square, Pos XSize/2,YSize - 1;
+    {
+      EntryIndex = STAIRS_UP + SOUTH;
+    }
+
+    Square, Pos XSize/2, 0;
+    {
+      EntryIndex = STAIRS_UP + NORTH;
+    }
+
+    Square, Pos XSize-1, YSize/2;
+    {
+      EntryIndex = STAIRS_UP + EAST;
+    }
+
+    Square, Pos 0, YSize/2;
+    {
+      EntryIndex = STAIRS_UP + WEST;
+    }
+
+    Square, Random;
+    {
+      Items == beartrap { Team = MONSTER_TEAM; IsActive = false; }
+      Times = 0:3;
+    }
+
+    Square, Random;
+    {
+      Items == Random { Category = FOOD; }
+      Times = 1:2;
+    }
+
+    Square, Random NOT_IN_ROOM|HAS_NO_OTERRAIN;
+    {
+      OTerrain = boulder(1);
+      Times = 10;
+    }
+
+    Square, Random NOT_IN_ROOM|HAS_NO_OTERRAIN;
+    {
+      OTerrain = boulder(2);
+      Times = 10;
+    }
+
+    RoomDefault
+    {
+      Pos = 2:40,2:24;
+      Size = 4:6,4:6;
+      AltarPossible = false;
+      WallSquare = solidterrain(GRASS_TERRAIN), wall(BRICK_PRIMITIVE);
+      FloorSquare = solidterrain(GRASS_TERRAIN), 0;
+      DoorSquare = solidterrain(GRASS_TERRAIN), BALSA_WOOD door;
+      GenerateDoor = true;
+      DivineMaster = 0;
+      GenerateTunnel = false;
+      GenerateLanterns = false;
+      Type = ROOM_NORMAL;
+      GenerateFountains = false;
+      AllowLockedDoors = false;
+      AllowBoobyTrappedDoors = false;
+      Shape = ROUND_CORNERS;
+      IsInside = true;
+      GenerateWindows = true;
+      UseFillSquareWalls = false;
+      Flags = 0;
+    }
+  }
+
+  Level 4; /*Urok Badlands West*/
+  {
+    Description = "Urok Badlands West";
+    ShortDescription = "Urok West";
+    FillSquare = solidterrain(UROK_BADLANDS_TERRAIN), 0;
+    Size = 26, 26;
+    GenerateMonsters = false;
+    Rooms = 0;
+    Items = 0;
+    IsOnGround = true;
+    LeaveToWorldMap = false;
+    AttachedAreaNorth = 6;
+    AttachedAreaEast = 3;
+    AttachedAreaSouth = NO_EXIT;
+    AttachedAreaWest = NO_EXIT;
+    TeamDefault = MONSTER_TEAM;
+    LOSModifier = 48;
+    IgnoreDefaultSpecialSquares = false;
+    AutoReveal = true;
+    CanGenerateBone = false;
+    DifficultyBase = 50;
+    DifficultyDelta = 0;
+    EnchantmentMinusChanceBase = -15;
+    EnchantmentMinusChanceDelta = 0;
+    EnchantmentPlusChanceBase = 0;
+    EnchantmentPlusChanceDelta = 0;
+    BackGroundType = YELLOW_FRACTAL;
+    EarthquakesAffectTunnels = true;
+    AudioPlayList = 
+    {
+      1,
+      "Empty.mid";
+    }
+
+    Square, Pos XSize-1,YSize/2;
+    {
+      EntryIndex = STAIRS_UP + EAST;
+    }
+
+    Square, Pos XSize/2, 0;
+    {
+      EntryIndex = STAIRS_UP + NORTH;
+    }
+
+    Square, Random;
+    {
+      Items == beartrap { Team = MONSTER_TEAM; IsActive = false; }
+      Times = 0:3;
+    }
+
+    Square, Random;
+    {
+      Items == Random { Category = FOOD; }
+      Times = 1:2;
+    }
+
+    Square, Random NOT_IN_ROOM|HAS_NO_OTERRAIN;
+    {
+      OTerrain = boulder(1);
+      Times = 10;
+    }
+
+    Square, Random NOT_IN_ROOM|HAS_NO_OTERRAIN;
+    {
+      OTerrain = boulder(2);
+      Times = 10;
+    }
+
+    RoomDefault
+    {
+      Pos = 2:40,2:24;
+      Size = 4:6,4:6;
+      AltarPossible = false;
+      WallSquare = solidterrain(GRASS_TERRAIN), wall(BRICK_PRIMITIVE);
+      FloorSquare = solidterrain(GRASS_TERRAIN), 0;
+      DoorSquare = solidterrain(GRASS_TERRAIN), BALSA_WOOD door;
+      GenerateDoor = true;
+      DivineMaster = 0;
+      GenerateTunnel = false;
+      GenerateLanterns = false;
+      Type = ROOM_NORMAL;
+      GenerateFountains = false;
+      AllowLockedDoors = false;
+      AllowBoobyTrappedDoors = false;
+      Shape = ROUND_CORNERS;
+      IsInside = true;
+      GenerateWindows = true;
+      UseFillSquareWalls = false;
+      Flags = 0;
+    }
+  }
+
+  Level 5; /*Urok Badlands East*/
+  {
+    Description = "Urok Badlands East";
+    ShortDescription = "Urok East";
+    FillSquare = solidterrain(UROK_BADLANDS_TERRAIN), 0;
+    Size = 26, 26;
+    GenerateMonsters = false;
+    Rooms = 0;
+    Items = 0;
+    IsOnGround = true;
+    LeaveToWorldMap = false;
+    AttachedAreaNorth = 7;
+    AttachedAreaEast = NO_EXIT;
+    AttachedAreaSouth = NO_EXIT;
+    AttachedAreaWest = 3;
+    TeamDefault = MONSTER_TEAM;
+    LOSModifier = 48;
+    IgnoreDefaultSpecialSquares = false;
+    AutoReveal = true;
+    CanGenerateBone = false;
+    DifficultyBase = 50;
+    DifficultyDelta = 0;
+    EnchantmentMinusChanceBase = -15;
+    EnchantmentMinusChanceDelta = 0;
+    EnchantmentPlusChanceBase = 0;
+    EnchantmentPlusChanceDelta = 0;
+    BackGroundType = YELLOW_FRACTAL;
+    EarthquakesAffectTunnels = true;
+    AudioPlayList = 
+    {
+      1,
+      "Empty.mid";
+    }
+
+    Square, Pos XSize/2, 0;
+    {
+      EntryIndex = STAIRS_UP + NORTH;
+    }
+
+    Square, Pos 0, YSize/2;
+    {
+      EntryIndex = STAIRS_UP + WEST;
+    }
+
+    Square, Random;
+    {
+      Items == beartrap { Team = MONSTER_TEAM; IsActive = false; }
+      Times = 0:3;
+    }
+
+    Square, Random;
+    {
+      Items == Random { Category = FOOD; }
+      Times = 1:2;
+    }
+
+    Square, Random NOT_IN_ROOM|HAS_NO_OTERRAIN;
+    {
+      OTerrain = boulder(1);
+      Times = 10;
+    }
+
+    Square, Random NOT_IN_ROOM|HAS_NO_OTERRAIN;
+    {
+      OTerrain = boulder(2);
+      Times = 10;
+    }
+
+    RoomDefault
+    {
+      Pos = 2:40,2:24;
+      Size = 4:6,4:6;
+      AltarPossible = false;
+      WallSquare = solidterrain(GRASS_TERRAIN), wall(BRICK_PRIMITIVE);
+      FloorSquare = solidterrain(GRASS_TERRAIN), 0;
+      DoorSquare = solidterrain(GRASS_TERRAIN), BALSA_WOOD door;
+      GenerateDoor = true;
+      DivineMaster = 0;
+      GenerateTunnel = false;
+      GenerateLanterns = false;
+      Type = ROOM_NORMAL;
+      GenerateFountains = false;
+      AllowLockedDoors = false;
+      AllowBoobyTrappedDoors = false;
+      Shape = ROUND_CORNERS;
+      IsInside = true;
+      GenerateWindows = true;
+      UseFillSquareWalls = false;
+      Flags = 0;
+    }
+  }
+
+  Level 6; /*Urok Badlands Northwest*/
+  {
+    Description = "Urok Badlands Northwest";
+    ShortDescription = "Urok NW";
+    FillSquare = solidterrain(UROK_BADLANDS_TERRAIN), 0;
+    Size = 26, 26;
+    GenerateMonsters = false;
+    Rooms = 0;
+    Items = 0;
+    IsOnGround = true;
+    LeaveToWorldMap = false;
+    AttachedAreaNorth = NO_EXIT;
+    AttachedAreaEast = NO_EXIT;
+    AttachedAreaSouth = 4;
+    AttachedAreaWest = NO_EXIT;
+    TeamDefault = MONSTER_TEAM;
+    LOSModifier = 48;
+    IgnoreDefaultSpecialSquares = false;
+    AutoReveal = true;
+    CanGenerateBone = false;
+    DifficultyBase = 50;
+    DifficultyDelta = 0;
+    EnchantmentMinusChanceBase = -15;
+    EnchantmentMinusChanceDelta = 0;
+    EnchantmentPlusChanceBase = 0;
+    EnchantmentPlusChanceDelta = 0;
+    BackGroundType = YELLOW_FRACTAL;
+    EarthquakesAffectTunnels = true;
+    AudioPlayList = 
+    {
+      1,
+      "Empty.mid";
+    }
+
+    Square, Pos XSize/2,YSize - 1;
+    {
+      EntryIndex = STAIRS_UP + SOUTH;
+    }
+
+    Square, Random;
+    {
+      Items == beartrap { Team = MONSTER_TEAM; IsActive = false; }
+      Times = 0:3;
+    }
+
+    Square, Random;
+    {
+      Items == Random { Category = FOOD; }
+      Times = 1:2;
+    }
+
+    Square, Random NOT_IN_ROOM|HAS_NO_OTERRAIN;
+    {
+      OTerrain = boulder(1);
+      Times = 10;
+    }
+
+    Square, Random NOT_IN_ROOM|HAS_NO_OTERRAIN;
+    {
+      OTerrain = boulder(2);
+      Times = 10;
+    }
+
+    RoomDefault
+    {
+      Pos = 2:40,2:24;
+      Size = 4:6,4:6;
+      AltarPossible = false;
+      WallSquare = solidterrain(GRASS_TERRAIN), wall(BRICK_PRIMITIVE);
+      FloorSquare = solidterrain(GRASS_TERRAIN), 0;
+      DoorSquare = solidterrain(GRASS_TERRAIN), BALSA_WOOD door;
+      GenerateDoor = true;
+      DivineMaster = 0;
+      GenerateTunnel = false;
+      GenerateLanterns = false;
+      Type = ROOM_NORMAL;
+      GenerateFountains = false;
+      AllowLockedDoors = false;
+      AllowBoobyTrappedDoors = false;
+      Shape = ROUND_CORNERS;
+      IsInside = true;
+      GenerateWindows = true;
+      UseFillSquareWalls = false;
+      Flags = 0;
+    }
+  }
+
+  Level 7; /*Urok Badlands Northeast*/
+  {
+    Description = "Urok Badlands Northeast";
+    ShortDescription = "Urok NE";
+    FillSquare = solidterrain(UROK_BADLANDS_TERRAIN), 0;
+    Size = 26, 26;
+    GenerateMonsters = false;
+    Rooms = 0;
+    Items = 0;
+    IsOnGround = true;
+    LeaveToWorldMap = false;
+    AttachedAreaNorth = NO_EXIT;
+    AttachedAreaEast = NO_EXIT;
+    AttachedAreaSouth = 5;
+    AttachedAreaWest = NO_EXIT;
+    TeamDefault = MONSTER_TEAM;
+    LOSModifier = 48;
+    IgnoreDefaultSpecialSquares = false;
+    AutoReveal = true;
+    CanGenerateBone = false;
+    DifficultyBase = 50;
+    DifficultyDelta = 0;
+    EnchantmentMinusChanceBase = -15;
+    EnchantmentMinusChanceDelta = 0;
+    EnchantmentPlusChanceBase = 0;
+    EnchantmentPlusChanceDelta = 0;
+    BackGroundType = YELLOW_FRACTAL;
+    EarthquakesAffectTunnels = true;
+    AudioPlayList = 
+    {
+      1,
+      "Empty.mid";
+    }
+
+    Square, Pos XSize/2,YSize - 1;
+    {
+      EntryIndex = STAIRS_UP + SOUTH;
+    }
+
+    Square, Random;
+    {
+      Items == beartrap { Team = MONSTER_TEAM; IsActive = false; }
+      Times = 0:3;
+    }
+
+    Square, Random;
+    {
+      Items == Random { Category = FOOD; }
+      Times = 1:2;
+    }
+
+    Square, Random NOT_IN_ROOM|HAS_NO_OTERRAIN;
+    {
+      OTerrain = boulder(1);
+      Times = 10;
+    }
+
+    Square, Random NOT_IN_ROOM|HAS_NO_OTERRAIN;
+    {
+      OTerrain = boulder(2);
+      Times = 10;
+    }
+
+    RoomDefault
+    {
+      Pos = 2:40,2:24;
+      Size = 4:6,4:6;
+      AltarPossible = false;
+      WallSquare = solidterrain(GRASS_TERRAIN), wall(BRICK_PRIMITIVE);
+      FloorSquare = solidterrain(GRASS_TERRAIN), 0;
+      DoorSquare = solidterrain(GRASS_TERRAIN), BALSA_WOOD door;
+      GenerateDoor = true;
+      DivineMaster = 0;
+      GenerateTunnel = false;
+      GenerateLanterns = false;
+      Type = ROOM_NORMAL;
+      GenerateFountains = false;
+      AllowLockedDoors = false;
+      AllowBoobyTrappedDoors = false;
+      Shape = ROUND_CORNERS;
+      IsInside = true;
+      GenerateWindows = true;
+      UseFillSquareWalls = false;
+      Flags = 0;
+    }
+  }
+
+  Level 8; /*Urok Canyon*/
+  {
+    Description = "Urok Canyon";
+    ShortDescription = "Urok Canyon";
+    FillSquare = solidterrain(UROK_BADLANDS_TERRAIN), 0;
+    Size = 26, 75;
+    GenerateMonsters = false;
+    Rooms = 0;
+    Items = 0;
+    IsOnGround = true;
+    LeaveToWorldMap = false;
+    AttachedAreaNorth = 9;
+    AttachedAreaEast = NO_EXIT;
+    AttachedAreaSouth = 3;
+    AttachedAreaWest = NO_EXIT;
+    TeamDefault = MONSTER_TEAM;
+    LOSModifier = 48;
+    IgnoreDefaultSpecialSquares = false;
+    AutoReveal = true;
+    CanGenerateBone = false;
+    DifficultyBase = 50;
+    DifficultyDelta = 0;
+    EnchantmentMinusChanceBase = -15;
+    EnchantmentMinusChanceDelta = 0;
+    EnchantmentPlusChanceBase = 0;
+    EnchantmentPlusChanceDelta = 0;
+    BackGroundType = YELLOW_FRACTAL;
+    EarthquakesAffectTunnels = true;
+    AudioPlayList = 
+    {
+      1,
+      "Empty.mid";
+    }
+
+    Square, Pos XSize/2,YSize - 1;
+    {
+      EntryIndex = STAIRS_UP + SOUTH;
+    }
+
+    Square, Pos XSize/2, 0;
+    {
+      EntryIndex = STAIRS_UP + NORTH;
+    }
+
+    Square, Random;
+    {
+      Items == beartrap { Team = MONSTER_TEAM; IsActive = false; }
+      Times = 0:3;
+    }
+
+    Square, Random;
+    {
+      Items == Random { Category = FOOD; }
+      Times = 1:2;
+    }
+
+    Square, Random NOT_IN_ROOM|HAS_NO_OTERRAIN;
+    {
+      OTerrain = boulder(1);
+      Times = 10;
+    }
+
+    Square, Random NOT_IN_ROOM|HAS_NO_OTERRAIN;
+    {
+      OTerrain = boulder(2);
+      Times = 10;
+    }
+
+    RoomDefault
+    {
+      Pos = 2:40,2:24;
+      Size = 4:6,4:6;
+      AltarPossible = false;
+      WallSquare = solidterrain(GRASS_TERRAIN), wall(BRICK_PRIMITIVE);
+      FloorSquare = solidterrain(GRASS_TERRAIN), 0;
+      DoorSquare = solidterrain(GRASS_TERRAIN), BALSA_WOOD door;
+      GenerateDoor = true;
+      DivineMaster = 0;
+      GenerateTunnel = false;
+      GenerateLanterns = false;
+      Type = ROOM_NORMAL;
+      GenerateFountains = false;
+      AllowLockedDoors = false;
+      AllowBoobyTrappedDoors = false;
+      Shape = ROUND_CORNERS;
+      IsInside = true;
+      GenerateWindows = true;
+      UseFillSquareWalls = false;
+      Flags = 0;
+    }
+  }
+
+  Level 9; /*Urok Badlands North*/
+  {
+    Description = "Urok Desolation";
+    ShortDescription = "Urok Desolation";
+    FillSquare = solidterrain(UROK_BADLANDS_TERRAIN), 0;
+    Size = 26, 26;
+    GenerateMonsters = false;
+    Rooms = 0;
+    Items = 0;
+    IsOnGround = true;
+    LeaveToWorldMap = false;
+    AttachedAreaNorth = NO_EXIT;
+    AttachedAreaEast = NO_EXIT;
+    AttachedAreaSouth = 8;
+    AttachedAreaWest = NO_EXIT;
+    TeamDefault = MONSTER_TEAM;
+    LOSModifier = 48;
+    IgnoreDefaultSpecialSquares = false;
+    AutoReveal = true;
+    CanGenerateBone = false;
+    DifficultyBase = 50;
+    DifficultyDelta = 0;
+    EnchantmentMinusChanceBase = -15;
+    EnchantmentMinusChanceDelta = 0;
+    EnchantmentPlusChanceBase = 0;
+    EnchantmentPlusChanceDelta = 0;
+    BackGroundType = YELLOW_FRACTAL;
+    EarthquakesAffectTunnels = true;
+    AudioPlayList = 
+    {
+      1,
+      "Empty.mid";
+    }
+
+    Square, Pos XSize/2,YSize - 1;
     {
       EntryIndex = STAIRS_UP + SOUTH;
     }
