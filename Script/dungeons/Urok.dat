@@ -21,23 +21,23 @@
 
 Dungeon UROK;
 {
-  Levels = 1;
+  Levels = 2;
   Description = "Urok";
   ShortDescription = "Uk";
 
   Level 0;
   {
     FillSquare = solidterrain(UROK_CITY_TERRAIN), 0;
-    Size = 42, 26;
+    Size = 75, 26;
     GenerateMonsters = false;
     Rooms = 0;
     Items = 0;
     IsOnGround = true;
-    LeaveToWorldMap = true;
-    /*AttachedAreaNorth = 8;*/
-    /*AttachedAreaEast = 5;*/
-    /*AttachedAreaSouth = 1;*/
-    /*AttachedAreaWest = 4;*/
+    LeaveToWorldMap = false;
+    AttachedAreaNorth = 1;
+    AttachedAreaEast = WORLD_MAP;
+    AttachedAreaSouth = WORLD_MAP;
+    AttachedAreaWest = WORLD_MAP;
     TeamDefault = MONSTER_TEAM;
     LOSModifier = 48;
     IgnoreDefaultSpecialSquares = false;
@@ -55,6 +55,101 @@ Dungeon UROK;
     {
       1,
       "Empty.mid";
+    }
+
+    Square, Pos 38,YSize - 1;
+    {
+      EntryIndex = STAIRS_UP;
+    }
+
+    Square, Pos 38, 1;
+    {
+      EntryIndex = STAIRS_UP + NORTH;
+    }
+
+    Square, Random;
+    {
+      Items == beartrap { Team = MONSTER_TEAM; IsActive = false; }
+      Times = 0:3;
+    }
+
+    Square, Random;
+    {
+      Items == Random { Category = FOOD; }
+      Times = 1:2;
+    }
+
+    Square, Random NOT_IN_ROOM|HAS_NO_OTERRAIN;
+    {
+      OTerrain = boulder(1);
+      Times = 10;
+    }
+
+    Square, Random NOT_IN_ROOM|HAS_NO_OTERRAIN;
+    {
+      OTerrain = boulder(2);
+      Times = 10;
+    }
+
+    RoomDefault
+    {
+      Pos = 2:40,2:24;
+      Size = 4:6,4:6;
+      AltarPossible = false;
+      WallSquare = solidterrain(GRASS_TERRAIN), wall(BRICK_PRIMITIVE);
+      FloorSquare = solidterrain(GRASS_TERRAIN), 0;
+      DoorSquare = solidterrain(GRASS_TERRAIN), BALSA_WOOD door;
+      GenerateDoor = true;
+      DivineMaster = 0;
+      GenerateTunnel = false;
+      GenerateLanterns = false;
+      Type = ROOM_NORMAL;
+      GenerateFountains = false;
+      AllowLockedDoors = false;
+      AllowBoobyTrappedDoors = false;
+      Shape = ROUND_CORNERS;
+      IsInside = true;
+      GenerateWindows = true;
+      UseFillSquareWalls = false;
+      Flags = 0;
+    }
+  }
+
+  Level 1;
+  {
+    FillSquare = solidterrain(UROK_CITY_TERRAIN), 0;
+    Size = 75, 26;
+    GenerateMonsters = false;
+    Rooms = 0;
+    Items = 0;
+    IsOnGround = true;
+    LeaveToWorldMap = false;
+    AttachedAreaNorth = WORLD_MAP;
+    AttachedAreaEast = WORLD_MAP;
+    AttachedAreaSouth = 0;
+    AttachedAreaWest = WORLD_MAP;
+    TeamDefault = MONSTER_TEAM;
+    LOSModifier = 48;
+    IgnoreDefaultSpecialSquares = false;
+    AutoReveal = true;
+    CanGenerateBone = false;
+    DifficultyBase = 50;
+    DifficultyDelta = 0;
+    EnchantmentMinusChanceBase = -15;
+    EnchantmentMinusChanceDelta = 0;
+    EnchantmentPlusChanceBase = 0;
+    EnchantmentPlusChanceDelta = 0;
+    BackGroundType = YELLOW_FRACTAL;
+    EarthquakesAffectTunnels = true;
+    AudioPlayList = 
+    {
+      1,
+      "Empty.mid";
+    }
+
+    Square, Pos 38,YSize - 1;
+    {
+      EntryIndex = STAIRS_UP + SOUTH;
     }
 
     Square, Random;

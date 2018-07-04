@@ -110,6 +110,17 @@
 #define RIGHT_LEG_INDEX 5
 #define LEFT_LEG_INDEX 6
 
+#define NORTHWEST 0
+#define NORTH 1
+#define NORTHEAST 2
+#define WEST 3
+#define EAST 4
+#define SOUTHWEST 5
+#define SOUTH 6
+#define SOUTHEAST 7
+#define YOURSELF 8
+#define RANDOM_DIR 9
+
 #define ALPP 0
 #define ALP 1
 #define AL 2
