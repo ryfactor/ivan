@@ -37,7 +37,7 @@ Dungeon UROK;
     AttachedAreaNorth = 1;
     AttachedAreaEast = WORLD_MAP;
     AttachedAreaSouth = WORLD_MAP;
-    AttachedAreaWest = WORLD_MAP;
+    AttachedAreaWest = NO_EXIT;
     TeamDefault = MONSTER_TEAM;
     LOSModifier = 48;
     IgnoreDefaultSpecialSquares = false;

@@ -495,6 +495,8 @@ cv2 SILHOUETTE_SIZE(48, 64); // it is TILE_SIZE*3,TILE_SIZE*4 tho..
 
 #define WORLD_MAP 255
 
+#define NO_EXIT 256
+
 #define DEFAULT_TEAM 0xFF
 
 /* Hard-coded teams */

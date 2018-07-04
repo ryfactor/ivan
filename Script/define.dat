@@ -1106,6 +1106,8 @@
 
 #define WORLD_MAP 255
 
+#define NO_EXIT 256
+
 #define DEFAULT_TEAM 255
 
 /* Hard-coded teams */

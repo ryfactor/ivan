@@ -1571,6 +1571,11 @@ truth character::TryMove(v2 MoveVector, truth Important, truth Run, truth* pbWai
           if(game::TryTravel(WORLD_MAP, WORLD_MAP, game::GetCurrentDungeonIndex()))
             return true;
         }
+        if(GetLevel()->AttachedAreaNorth() == NO_EXIT)
+        {
+          ADD_MESSAGE("You cannot leave this area from this direction.");
+          return false;
+        }
         if(game::TryTravel(game::GetCurrentDungeonIndex(), GetLevel()->AttachedAreaNorth(), STAIRS_UP + SOUTH))
           return true;
       }
@@ -1580,6 +1585,11 @@ truth character::TryMove(v2 MoveVector, truth Important, truth Run, truth* pbWai
         {
           if(game::TryTravel(WORLD_MAP, WORLD_MAP, game::GetCurrentDungeonIndex()))
             return true;
+        }
+        if(GetLevel()->AttachedAreaEast() == NO_EXIT)
+        {
+          ADD_MESSAGE("You cannot leave this area from this direction.");
+          return false;
         }
         if(game::TryTravel(game::GetCurrentDungeonIndex(), GetLevel()->AttachedAreaEast(), STAIRS_UP + WEST))
           return true;
@@ -1591,6 +1601,11 @@ truth character::TryMove(v2 MoveVector, truth Important, truth Run, truth* pbWai
           if(game::TryTravel(WORLD_MAP, WORLD_MAP, game::GetCurrentDungeonIndex()))
             return true;
         }
+        if(GetLevel()->AttachedAreaSouth() == NO_EXIT)
+        {
+          ADD_MESSAGE("You cannot leave this area from this direction.");
+          return false;
+        }
         if(game::TryTravel(game::GetCurrentDungeonIndex(), GetLevel()->AttachedAreaSouth(), STAIRS_UP + NORTH))
           return true;
       }
@@ -1600,6 +1615,11 @@ truth character::TryMove(v2 MoveVector, truth Important, truth Run, truth* pbWai
         {
           if(game::TryTravel(WORLD_MAP, WORLD_MAP, game::GetCurrentDungeonIndex()))
             return true;
+        }
+        if(GetLevel()->AttachedAreaWest() == NO_EXIT)
+        {
+          ADD_MESSAGE("You cannot leave this area from this direction.");
+          return false;
         }
         if(game::TryTravel(game::GetCurrentDungeonIndex(), GetLevel()->AttachedAreaWest(), STAIRS_UP + EAST))
           return true;
