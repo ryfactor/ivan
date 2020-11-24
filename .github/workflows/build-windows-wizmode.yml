@@ -17,13 +17,13 @@ jobs:
         toolset: 14.16
 
     - name: Check PATH
-      run: echo %PATH%; dir; pwd
+      run: dir; pwd
 
     - name: Run vcpkg
-      run: cd C:\vcpkg && ./bootstrap-vcpkg.sh && .\vcpkg integrate install && .\vcpkg install sdl2 sdl2-mixer libpng pcre
+      run: cd C:\vcpkg; ./bootstrap-vcpkg.sh; .\vcpkg integrate install; .\vcpkg install sdl2 sdl2-mixer libpng pcre
 
     - name: Create build directory
-      run: cd ${{ github.workspace }} && mkdir build && cd build
+      run: cd ${{ github.workspace }}; mkdir build; cd build
 
     - name: Configure CMake
       env:
