@@ -15,12 +15,16 @@ jobs:
       with:
         arch: x86
         toolset: 14.16
+    - uses: lukka/run-vcpkg@v5
+      with:
+        vcpkgDirectory: 'C:/vcpkg'
+        vcpkgArguments: '@${{ github.workspace }}/vcpkg.txt'
+        vcpkgGitCommitId: ec6fe06e8da05a8157dc8581fa96b36b571c1bd5
+        appendedCacheKey: ${{ hashFiles(env.vcpkgResponseFile) }}
+        vcpkgTriplet: x86_windows
 
-    - name: Check PATH
-      run: dir; pwd
-
-    - name: Run vcpkg
-      run: cd C:\vcpkg; ./bootstrap-vcpkg.sh; .\vcpkg integrate install; .\vcpkg install sdl2 sdl2-mixer libpng pcre
+#    - name: Run vcpkg
+#      run: cd C:\vcpkg; ./bootstrap-vcpkg.sh; .\vcpkg integrate install; .\vcpkg install sdl2 sdl2-mixer libpng pcre
 
     - name: Create build directory
       run: cd ${{ github.workspace }}; mkdir build

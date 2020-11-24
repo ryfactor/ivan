@@ -1,0 +1,6 @@
+sdl2
+sdl2-mixer
+libpng
+pcre
+--triplet
+x86
