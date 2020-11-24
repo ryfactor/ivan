@@ -1,0 +1,28 @@
+name: CMake
+
+on: [push]
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    - uses: actions/checkout@v1
+    - uses: ilammy/msvc-dev-cmd@v1
+      arch: x86
+      toolset: 14.16
+
+    - name: Run vcpkg
+      run: .\vcpkg install sdl2 sdl2-mixer libpng pcre
+
+    - name: Create build directory
+      run: mkdir build && cd build
+
+    - name: Configure CMake
+      env:
+        CXXFLAGS: -DWIZARD
+      run: cmake .. -G "Visual Studio 15 2017" -DCMAKE_BUILD_TYPE=Release -DHAVE_CXX14=ON -DWIZARD=ON -DMSVC_HIDE_CONSOLE_WINDOW=ON
+
+    - name: Build
+      run: cmake --build . 
