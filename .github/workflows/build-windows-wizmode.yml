@@ -23,7 +23,7 @@ jobs:
       run: cd C:\vcpkg; ./bootstrap-vcpkg.sh; .\vcpkg integrate install; .\vcpkg install sdl2 sdl2-mixer libpng pcre
 
     - name: Create build directory
-      run: cd ${{ github.workspace }}; mkdir build; mkdir install
+      run: cd ${{ github.workspace }}; mkdir build
 
     - name: Configure CMake
       env:
@@ -31,7 +31,7 @@ jobs:
       run: cd build; cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DHAVE_CXX14=ON -DWIZARD=ON -DMSVC_HIDE_CONSOLE_WINDOW=ON -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
 
     - name: Build
-      run: cd build; cmake --build . 
+      run: cmake --build . 
 
     - name: Install
-      run: cd install; cmake --install . 
+      run: cd build; cmake --install . 
