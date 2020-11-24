@@ -21,7 +21,7 @@ jobs:
         vcpkgArguments: '@${{ github.workspace }}/vcpkg.txt'
         vcpkgGitCommitId: ec6fe06e8da05a8157dc8581fa96b36b571c1bd5
         appendedCacheKey: ${{ hashFiles(env.vcpkgResponseFile) }}
-        vcpkgTriplet: x86_windows
+        vcpkgTriplet: x86-windows
 
 #    - name: Run vcpkg
 #      run: cd C:\vcpkg; ./bootstrap-vcpkg.sh; .\vcpkg integrate install; .\vcpkg install sdl2 sdl2-mixer libpng pcre
