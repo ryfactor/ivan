@@ -28,7 +28,8 @@ jobs:
     - name: Configure CMake
       env:
         CXXFLAGS: -DWIZARD
-      run: cmake .. -G "Visual Studio 15 2017" -DCMAKE_BUILD_TYPE=Release -DHAVE_CXX14=ON -DWIZARD=ON -DMSVC_HIDE_CONSOLE_WINDOW=ON
+      run: cmake -G "Visual Studio 15 2017" -DCMAKE_BUILD_TYPE=Release -DHAVE_CXX14=ON -DWIZARD=ON -DMSVC_HIDE_CONSOLE_WINDOW=ON -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
+
 
     - name: Build
       run: cmake --build . 
