@@ -17,10 +17,13 @@ jobs:
         toolset: 14.16
 
     - name: Check PATH
-      run: echo %PATH%
+      run: |
+      pwd
+      dir
+      echo %PATH%
 
     - name: Run vcpkg
-      run: cd C:\vcpkg && .\vcpkg install sdl2 sdl2-mixer libpng pcre
+      run: cd C:\vcpkg && ./bootstrap-vcpkg.sh && .\vcpkg integrate install && .\vcpkg install sdl2 sdl2-mixer libpng pcre
 
     - name: Create build directory
       run: cd ${{ github.workspace }} && mkdir build && cd build
