@@ -16,8 +16,11 @@ jobs:
         arch: x86
         toolset: 14.16
 
+    - name: Check PATH
+      run: echo %PATH%
+
     - name: Run vcpkg
-      run: .\vcpkg install sdl2 sdl2-mixer libpng pcre
+      run: .\vcpkg.exe install sdl2 sdl2-mixer libpng pcre
 
     - name: Create build directory
       run: mkdir build && cd build
