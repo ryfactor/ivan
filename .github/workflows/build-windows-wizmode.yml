@@ -31,7 +31,7 @@ jobs:
       run: cd build; cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DHAVE_CXX14=ON -DWIZARD=ON -DMSVC_HIDE_CONSOLE_WINDOW=ON -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
 
     - name: Build
-      run: cmake --build . 
+      run: cd build; cmake --build . 
 
     - name: Install
       run: cd build; cmake --install . 
