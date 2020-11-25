@@ -28,7 +28,7 @@ jobs:
     - name: Configure CMake
       env:
         CXXFLAGS: -DWIZARD
-      run: cd build; cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DHAVE_CXX14=ON -DWIZARD=ON -DMSVC_HIDE_CONSOLE_WINDOW=ON -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_CXX_FLAGS="-Werror -Wno-undefined-var-template -Wno-unknown-warning-option ${CXXFLAGS}"
+      run: cd build; cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DHAVE_CXX14=ON -DWIZARD=ON -DMSVC_HIDE_CONSOLE_WINDOW=ON -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
 
     - name: Build
       run: cd build; cmake --build . 
