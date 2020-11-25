@@ -36,12 +36,12 @@ jobs:
 
     - name: Install & Packaging
       run: |
-#        export GITHUB_WORKSPACE_BASH=$(echo "/$GITHUB_WORKSPACE" | sed -e 's/\\/\//g' -e 's/://')
-#        cd $GITHUB_WORKSPACE_BASH/install
         "/c/Program Files/CMake/bin/cpack" -G ZIP ./install
         ninja install
       shell: bash
 
+#        export GITHUB_WORKSPACE_BASH=$(echo "/$GITHUB_WORKSPACE" | sed -e 's/\\/\//g' -e 's/://')
+#        cd $GITHUB_WORKSPACE_BASH/install
 
 #    - name: Configure CMake
 #      env:
