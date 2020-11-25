@@ -11,10 +11,10 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: ilammy/msvc-dev-cmd@v1
-      with:
-        arch: x86
-        toolset: 14.16
+#    - uses: ilammy/msvc-dev-cmd@v1
+#      with:
+#        arch: x86
+#        toolset: 14.16
     - uses: lukka/run-vcpkg@v5
       with:
         vcpkgDirectory: 'C:/vcpkg'
