@@ -25,7 +25,7 @@ jobs:
     - name: Create build directory
       run: cd ${{ github.workspace }}; mkdir build
 
-    - name: 'Run CMake with NMake'
+    - name: 'Run CMake with Ninja'
       uses: lukka/run-cmake@v3
       with:
         cmakeListsOrSettingsJson: CMakeSettingsJson
@@ -36,7 +36,7 @@ jobs:
 
     - name: Install & Packaging
       run: |
-        cd ${{ github.workspace }}/install
+        cd $GITHUB_WORKSPACE/install
         "/c/Program Files/CMake/bin/cpack" -G ZIP .
         ninja install
       shell: bash
