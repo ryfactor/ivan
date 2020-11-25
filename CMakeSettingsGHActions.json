@@ -2,7 +2,7 @@
   "configurations": [
     {
       "name": "x86-Release",
-      "generator": "Visual Studio 16 2019",
+      "generator": "Ninja",
       "configurationType": "Release",
       "inheritEnvironments": [
         "msvc_x86"
