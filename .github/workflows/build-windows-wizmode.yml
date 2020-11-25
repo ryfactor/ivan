@@ -32,6 +32,15 @@ jobs:
         useVcpkgToolchainFile: true
         cmakeSettingsJsonPath: '${{ github.workspace }}/CMakeSettingsGHActions.json'
         configurationRegexFilter: '${{ matrix.configuration }}'
+        buildDirectory: '${{ github.workspace }}/build'
+
+    - name: Install & Packaging
+      run: |
+        cd ${{ github.workspace }}/install
+        "/c/Program Files/CMake/bin/cpack" -G ZIP .
+        ninja install
+      shell: bash
+
 
 #    - name: Configure CMake
 #      env:
