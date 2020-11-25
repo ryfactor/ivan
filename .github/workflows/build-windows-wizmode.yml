@@ -30,7 +30,7 @@ jobs:
       with:
         cmakeListsOrSettingsJson: CMakeSettingsJson
         useVcpkgToolchainFile: true
-        cmakeSettingsJsonPath: '${{ github.workspace }}/ci/win/msvc/CMakeSettings.json'
+        cmakeSettingsJsonPath: '${{ github.workspace }}/CMakeSettingsGHActions.json'
         configurationRegexFilter: '${{ matrix.configuration }}'
 
 #    - name: Configure CMake
