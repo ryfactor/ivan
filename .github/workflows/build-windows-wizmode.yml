@@ -25,13 +25,24 @@ jobs:
     - name: Create build directory
       run: cd ${{ github.workspace }}; mkdir build
 
-    - name: Configure CMake
-      env:
-        CXXFLAGS: -DWIZARD
-      run: cd build; cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DHAVE_CXX14=ON -DWIZARD=ON -DMSVC_HIDE_CONSOLE_WINDOW=ON -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
+    - name: Create install directory
+      run: cd ${{ github.workspace }}; mkdir install
 
-    - name: Build
-      run: cd build; cmake --build . 
+    - name: 'Run CMake with NMake'
+      uses: lukka/run-cmake@v3
+      with:
+        cmakeListsOrSettingsJson: CMakeSettingsJson
+        useVcpkgToolchainFile: true
+        cmakeSettingsJsonPath: '${{ github.workspace }}/ci/win/msvc/CMakeSettings.json'
+        configurationRegexFilter: '${{ matrix.configuration }}'
 
-    - name: Install
-      run: cd build; cmake --install . 
+#    - name: Configure CMake
+#      env:
+#        CXXFLAGS: -DWIZARD
+#      run: cd build; cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DHAVE_CXX14=ON -DWIZARD=ON -DMSVC_HIDE_CONSOLE_WINDOW=ON -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
+
+#    - name: Build
+#      run: cd build; cmake --build . 
+
+#    - name: Install
+#      run: cd build; cmake --install . 

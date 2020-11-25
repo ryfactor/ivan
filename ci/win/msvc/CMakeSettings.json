@@ -1,0 +1,17 @@
+{
+  "configurations": [
+    {
+      "name": "x86-Release",
+      "generator": "NMake Makefiles",
+      "configurationType": "Release",
+      "inheritEnvironments": [
+        "msvc_x86"
+      ],
+      "buildRoot": "${env.github.workspace}\\build",
+      "installRoot": "${env.github.workspace}\\install",
+      "cmakeCommandArgs": "-DHAVE_CXX14=ON, -DWIZARD=ON, -DMSVC_HIDE_CONSOLE_WINDOW=ON",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+    }
+  ]
+}
