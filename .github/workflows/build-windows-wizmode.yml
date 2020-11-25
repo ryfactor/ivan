@@ -22,16 +22,13 @@ jobs:
         vcpkgGitCommitId: ec6fe06e8da05a8157dc8581fa96b36b571c1bd5
         appendedCacheKey: ${{ hashFiles(env.vcpkgResponseFile) }}
 
-#    - name: Run vcpkg
-#      run: cd C:\vcpkg; ./bootstrap-vcpkg.sh; .\vcpkg integrate install; .\vcpkg install sdl2 sdl2-mixer libpng pcre
-
     - name: Create build directory
       run: cd ${{ github.workspace }}; mkdir build
 
     - name: Configure CMake
       env:
         CXXFLAGS: -DWIZARD
-      run: cd build; cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DHAVE_CXX14=ON -DWIZARD=ON -DMSVC_HIDE_CONSOLE_WINDOW=ON -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
+      run: cd build; cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DHAVE_CXX14=ON -DWIZARD=ON -DMSVC_HIDE_CONSOLE_WINDOW=ON -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_CXX_FLAGS="-Werror -Wno-undefined-var-template -Wno-unknown-warning-option ${CXXFLAGS}"
 
     - name: Build
       run: cd build; cmake --build . 
