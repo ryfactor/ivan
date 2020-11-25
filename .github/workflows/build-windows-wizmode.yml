@@ -34,9 +34,9 @@ jobs:
         configurationRegexFilter: '${{ matrix.configuration }}'
         buildDirectory: '${{ github.workspace }}/build'
 
-    - name: Install & Packaging
-      run: ninja install
-      shell: bash
+#    - name: Install & Packaging
+#      run: ninja install
+#      shell: bash
 
 #|
 #        "/c/Program Files/CMake/bin/cpack" -G ZIP ./install
@@ -52,5 +52,5 @@ jobs:
 #    - name: Build
 #      run: cd build; cmake --build . 
 
-#    - name: Install
-#      run: cd build; cmake --install . 
+    - name: Install
+      run: cd build; cmake --install . 
