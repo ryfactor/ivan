@@ -11,7 +11,7 @@
       "installRoot": "${env.github.workspace}\\install",
       "cmakeCommandArgs": "-DHAVE_CXX14=ON, -DWIZARD=ON, -DMSVC_HIDE_CONSOLE_WINDOW=ON",
       "buildCommandArgs": "",
-      "ctestCommandArgs": "",
+      "ctestCommandArgs": ""
     }
   ]
 }
