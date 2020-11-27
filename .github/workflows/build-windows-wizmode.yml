@@ -56,4 +56,4 @@ jobs:
       run: cd build\x86-Release; cmake --install . 
 
     - name: Package
-      run: Compress-Archive -Path C:\Program Files (x86)\ivan\ivan\*.* -DestinationPath ${{ github.workspace }}\IvanWin.zip
+      run: Compress-Archive -Path "C:\Program Files (x86)\ivan\ivan\*.*" -DestinationPath ${{ github.workspace }}\IvanWin.zip
