@@ -47,7 +47,7 @@ endif()
 # Try finding libpng using pkg-config first, because find_package(PNG) finds a
 # mismatching header + library combination for me.
 include(FindPkgConfig)
-if(PKG_CONFIG_FOUND)
+if(PKG_CONFIG_FOUND AND NOT MSVC)
   pkg_check_modules(PNG libpng)
   set(PNG_LIBRARIES ${PNG_LDFLAGS})
   message("PNG_LIBRARIES 1 is ${PNG_LIBRARIES}")
