@@ -15,7 +15,7 @@ jobs:
 #      with:
 #        arch: x86
 #        toolset: 14.16
-    - uses: lukka/run-vcpkg@v6
+    - uses: lukka/run-vcpkg@v5
       with:
         vcpkgDirectory: 'C:/vcpkg'
         vcpkgArguments: '@${{ github.workspace }}/vcpkg.txt'
