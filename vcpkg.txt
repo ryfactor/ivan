@@ -2,5 +2,6 @@ sdl2
 sdl2-mixer
 libpng
 pcre
+zlib
 --triplet
 x86-windows
