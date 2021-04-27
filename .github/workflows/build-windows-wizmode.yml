@@ -57,3 +57,11 @@ jobs:
 
     - name: Package
       run: Compress-Archive -Path "C:\Program Files (x86)\ivan\ivan\*.*" -DestinationPath ${{ github.workspace }}\IvanWin.zip
+
+    - name: Release
+        uses: softprops/action-gh-release@v1
+#        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: IvanWin.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
