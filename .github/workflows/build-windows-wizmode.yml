@@ -68,5 +68,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Print
-      run: Get-Content ${{ github.workspace }}\build\x86-Release\CMakeCache.txt
+#    - name: Print
+#      run: Get-Content ${{ github.workspace }}\build\x86-Release\CMakeCache.txt
