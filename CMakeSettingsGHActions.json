@@ -10,7 +10,7 @@
       "buildRoot": "${env.github.workspace}\\build",
       "installRoot": "${env.github.workspace}\\install",
       "cmakeCommandArgs": "-DCMAKE_BUILD_TYPE=Release -DHAVE_CXX14=ON, -DWIZARD=ON, -DMSVC_HIDE_CONSOLE_WINDOW=ON",
-      "buildCommandArgs": "-v",
+      "buildCommandArgs": "-verbosity:diag",
       "ctestCommandArgs": ""
     }
   ]
