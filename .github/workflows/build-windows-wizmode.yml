@@ -69,4 +69,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Print
-      run: Get-Content CMakeCache.txt
+      run: Get-Content ${{ github.workspace }}\build\x86-Release\CMakeCache.txt
