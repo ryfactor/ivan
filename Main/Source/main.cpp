@@ -29,6 +29,10 @@
 #include <unistd.h>
 #endif
 
+#ifdef WIN32
+#include <windows.h>
+#endif
+
 #include "game.h"
 #include "database.h"
 #include "definesvalidator.h"
