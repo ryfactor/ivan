@@ -19,7 +19,7 @@ jobs:
       with:
 #        vcpkgDirectory: 'C:/vcpkg'
         vcpkgArguments: '@${{ github.workspace }}/vcpkg.txt'
-        vcpkgGitCommitId: e026654714c1d39acfa4bc0eabe9af8936212c13
+        vcpkgGitCommitId: e7007cebe43628462aaf37cb79963a6ce751da82
 #        vcpkgGitCommitId: ec6fe06e8da05a8157dc8581fa96b36b571c1bd5
         appendedCacheKey: ${{ hashFiles(env.vcpkgResponseFile) }}
 #        doNotCache: true
