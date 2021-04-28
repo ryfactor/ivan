@@ -33,6 +33,7 @@ set_source_files_properties(
     PROPERTIES HEADER_FILE_ONLY TRUE)
 
 message("CMAKE_EXE_LINKER_FLAGS 2 is ${CMAKE_EXE_LINKER_FLAGS}")
+message("CMAKE_EXE_LINKER_FLAGS_RELEASE 2 is ${CMAKE_EXE_LINKER_FLAGS_RELEASE}")
 message("PCRE_DEFINITIONS is ${PCRE_DEFINITIONS}")
 
 add_executable(ivan ${IVAN_SOURCES} Resource/Ivan.rc)
