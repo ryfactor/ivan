@@ -67,3 +67,6 @@ jobs:
         files: IvanWin.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Print
+      run: Get-Content ${{ github.workspace }}\build\CMakeCache.txt
