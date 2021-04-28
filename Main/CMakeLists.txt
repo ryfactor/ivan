@@ -32,6 +32,9 @@ set_source_files_properties(
     Source/cmdswapweap.cpp
     PROPERTIES HEADER_FILE_ONLY TRUE)
 
+message("CMAKE_EXE_LINKER_FLAGS 2 is ${CMAKE_EXE_LINKER_FLAGS}")
+message("PCRE_DEFINITIONS is ${PCRE_DEFINITIONS}")
+
 add_executable(ivan ${IVAN_SOURCES} Resource/Ivan.rc)
 target_include_directories(ivan PUBLIC Include ../Felib/Include ../audio ../fantasyname ${PCRE_INCLUDE_DIRS} ${SDL2_mixer_INCLUDE_DIR})
 target_link_libraries(ivan FeLib FeAudio xbrzscale fantasyname ${PCRE_LIBRARIES} ${SDL2_mixer_LIBRARY})
