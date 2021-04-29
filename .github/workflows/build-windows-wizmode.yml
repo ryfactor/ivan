@@ -31,11 +31,10 @@ jobs:
       with:
         cmakeBuildType: "Release"
         cmakeListsOrSettingsJson: "CMakeSettingsJson"
-        useVcpkgToolchainFile: true
+#        useVcpkgToolchainFile: true
         cmakeSettingsJsonPath: '${{ github.workspace }}/CMakeSettingsGHActions.json'
         configurationRegexFilter: '${{ matrix.configuration }}'
         buildDirectory: '${{ github.workspace }}/build'
-        useVcpkgToolchainFile: true
 #        buildWithCMakeArgs: '--clean-first'
 
 #    - name: Install & Packaging
