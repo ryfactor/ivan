@@ -35,7 +35,6 @@ jobs:
         cmakeSettingsJsonPath: '${{ github.workspace }}/CMakeSettingsGHActions.json'
         configurationRegexFilter: '${{ matrix.configuration }}'
         buildDirectory: '${{ github.workspace }}/build'
-        buildWithCMakeArgs: '--clean-first --'
 
 #    - name: Install & Packaging
 #      run: ninja install
