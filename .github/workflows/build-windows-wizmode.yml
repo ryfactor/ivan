@@ -29,12 +29,13 @@ jobs:
     - name: 'Run CMake with Ninja'
       uses: lukka/run-cmake@v3
       with:
-        cmakeBuildType: "Release"
-        cmakeListsOrSettingsJson: "CMakeSettingsJson"
+        cmakeBuildType: Release
+        cmakeListsOrSettingsJson: CMakeSettingsJson
         useVcpkgToolchainFile: true
         cmakeSettingsJsonPath: '${{ github.workspace }}/CMakeSettingsGHActions.json'
         configurationRegexFilter: '${{ matrix.configuration }}'
         buildDirectory: '${{ github.workspace }}/build'
+        buildWithCMakeArgs: '--clean-first --'
 
 #    - name: Install & Packaging
 #      run: ninja install
