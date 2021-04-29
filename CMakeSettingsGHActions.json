@@ -2,15 +2,15 @@
   "configurations": [
     {
       "name": "x86-Release",
-      "generator": "Visual Studio 16 2019",
+      "generator": "Ninja",
       "configurationType": "Release",
       "inheritEnvironments": [
         "msvc_x86"
       ],
       "buildRoot": "${env.github.workspace}\\build",
       "installRoot": "${env.github.workspace}\\install",
-      "cmakeCommandArgs": "-A Win32, -DCMAKE_BUILD_TYPE=Release, -DHAVE_CXX14=ON, -DWIZARD=ON, -DMSVC_HIDE_CONSOLE_WINDOW=ON",
-      "buildCommandArgs": "-verbosity:diag -p:PreferredToolArchitecture=x86",
+      "cmakeCommandArgs": "-DCMAKE_BUILD_TYPE=Release, -DHAVE_CXX14=ON, -DWIZARD=ON, -DMSVC_HIDE_CONSOLE_WINDOW=ON",
+      "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     }
   ]
