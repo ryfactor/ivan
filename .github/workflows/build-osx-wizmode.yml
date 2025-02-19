@@ -60,7 +60,7 @@ jobs:
         run: |
           if [[ "${GITHUB_REF}" =~ ^refs/tags/ ]]; then
               export TODO_BREW_UPDATE=ON
-              export MACOSX_DEPLOYMENT_TARGET=10.9
+              export MACOSX_DEPLOYMENT_TARGET=13
               echo MACOSX_DEPLOYMENT_TARGET = $MACOSX_DEPLOYMENT_TARGET
           fi
           export SDL2DIR="$HOME/Thirdparty/Frameworks"
