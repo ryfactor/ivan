@@ -9752,7 +9752,7 @@ class definesvalidator{
 #endif 
 
 
-  if(ssErrors.str().length() > 0) ABORT(ssErrors.str().c_str());
+  if(ssErrors.str().length() > 0) ABORT("Error: %s", ssErrors.CStr());
 
 }};
 
