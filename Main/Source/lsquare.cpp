@@ -1398,14 +1398,12 @@ void lsquare::KickAnyoneStandingHereAway()
 
 outputfile& operator<<(outputfile& SaveFile, const emitter& Emitter)
 {
-  SaveFile.Write(reinterpret_cast<cchar*>(&Emitter), sizeof(Emitter));
-  return SaveFile;
+  return SaveFile << Emitter.ID << Emitter.Emitation;
 }
 
 inputfile& operator>>(inputfile& SaveFile, emitter& Emitter)
 {
-  SaveFile.Read(reinterpret_cast<char*>(&Emitter), sizeof(Emitter));
-  return SaveFile;
+  return SaveFile >> Emitter.ID >> Emitter.Emitation;
 }
 
 void lsquare::AddItem(item* Item)

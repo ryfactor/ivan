@@ -3062,7 +3062,7 @@ void updateCraftDesc(){
 
   festring fsDesc=fsSkill;
   if(vSuspended.size()>0)
-    fsDesc<<" (Suspended Actions: "<<vSuspended.size()<<")";
+    fsDesc<<" (Suspended Actions: "<<int(vSuspended.size())<<")";
 
   craftRecipes.AddDescription(fsDesc,fSkill<10?RED:WHITE);
 }
