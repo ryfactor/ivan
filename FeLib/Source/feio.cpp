@@ -22,13 +22,22 @@
 #include <cstring>
 #include <vector>
 
+#if defined(UNIX) || defined(USE_OPENDIR)
+#include <dirent.h>
+#else
+
 #ifdef WIN32
 #define stat _stat
 #include <io.h>
 #endif
 
+#ifdef __DJGPP__
+#include <dir.h>
+#endif
+
+#endif
+
 #ifdef UNIX
-#include <dirent.h>
 #include <stddef.h>
 #include <cstdio>
 #include <time.h>
@@ -37,9 +46,6 @@
 #include <sstream>
 #endif
 
-#ifdef __DJGPP__
-#include <dir.h>
-#endif
 
 #include "bitmap.h"
 #include "error.h"
@@ -1044,7 +1050,7 @@ festring iosystem::ContinueMenu(col16 TopicColor, col16 ListColor,
   felist List(CONST_S("Choose a file and be sorry:"), TopicColor);
 
   ////////////////////////// OS SPECIFIC!!! collect all files at save folder. //////////////////////////
-#ifdef UNIX
+#if defined(UNIX) || defined(USE_OPENDIR)
   {
     DIR* dp;
     struct dirent* ep;
@@ -1091,6 +1097,7 @@ festring iosystem::ContinueMenu(col16 TopicColor, col16 ListColor,
       Check = findnext(&Found);
     }
   }
+#endif
 #endif
 
   if(vFiles.size()==0){
