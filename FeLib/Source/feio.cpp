@@ -1061,7 +1061,7 @@ festring iosystem::ContinueMenu(col16 TopicColor, col16 ListColor,
       closedir(dp);
     }
   }
-#endif
+#else
 
 #ifdef WIN32
   struct _finddata_t Found;
