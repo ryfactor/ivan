@@ -13,6 +13,7 @@
 /* Compiled through levelset.cpp */
 
 #include "dbgmsgproj.h"
+#include <actions.h>
 
 lsquare*** eyecontroller::Map;
 
@@ -1195,15 +1196,12 @@ void lsquare::ChangeOLTerrainAndUpdateLights(olterrain* NewTerrain)
 
 void lsquare::DrawParticles(long Color, truth DrawHere)
 {
-  if(GetPos().X < game::GetCamera().X
-     || GetPos().Y < game::GetCamera().Y
-     || GetPos().X >= game::GetCamera().X + game::GetScreenXSize()
-     || GetPos().Y >= game::GetCamera().Y + game::GetScreenYSize()
+  if(!game::PosCurrentlyOnScreen(GetPos())
      || !CanBeSeenByPlayer(true)
      || Color == TRANSPARENT_COLOR)
     return;
 
-  clock_t StartTime = clock();
+  auto StartTime = globalwindowhandler::GetClock();
 
   if(DrawHere)
     game::DrawEverythingNoBlit();
@@ -1221,7 +1219,7 @@ void lsquare::DrawParticles(long Color, truth DrawHere)
   if(DrawHere)
   {
     graphics::BlitDBToScreen();
-    while(clock() - StartTime < 0.02 * CLOCKS_PER_SEC);
+    globalwindowhandler::WaitUntil(StartTime + 20);
   }
 }
 
@@ -1264,6 +1262,10 @@ truth lsquare::TryKey(item* Key, character* Applier)
 
 void lsquare::SignalSeen(ulong Tick)
 {
+  if(!Memorized)
+  {
+    autoexplore::AddToNewlySeen(this);
+  }
   if(LastSeen < Tick - 2)
     Flags |= STRONG_NEW_DRAW_REQUEST;
 
@@ -1415,11 +1417,7 @@ void lsquare::AddItem(item* Item)
 
 v2 lsquare::DrawLightning(v2 StartPos, long Color, int Direction, truth DrawHere)
 {
-  if(GetPos().X < game::GetCamera().X
-     || GetPos().Y < game::GetCamera().Y
-     || GetPos().X >= game::GetCamera().X + game::GetScreenXSize()
-     || GetPos().Y >= game::GetCamera().Y + game::GetScreenYSize()
-     || !CanBeSeenByPlayer(true))
+  if(!game::PosCurrentlyOnScreen(GetPos()) || !CanBeSeenByPlayer(true))
     switch(Direction)
     {
      case NORTH: return v2(RAND() & 15, 15);
@@ -1429,7 +1427,7 @@ v2 lsquare::DrawLightning(v2 StartPos, long Color, int Direction, truth DrawHere
      default: return StartPos;
     }
 
-  clock_t StartTime = clock();
+  auto StartTime = globalwindowhandler::GetClock();
   bitmap Empty(TILE_V2, TRANSPARENT_COLOR);
   Empty.ActivateFastFlag();
 
@@ -1481,7 +1479,7 @@ v2 lsquare::DrawLightning(v2 StartPos, long Color, int Direction, truth DrawHere
   if(DrawHere)
   {
     graphics::BlitDBToScreen();
-    while(clock() - StartTime < 0.02 * CLOCKS_PER_SEC);
+    globalwindowhandler::WaitUntil(StartTime + 20);
   }
 
   return StartPos;
