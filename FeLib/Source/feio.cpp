@@ -226,7 +226,7 @@ int iosystem::Menu(std::vector<bitmap*> vBackGround, v2 Pos,
     }
 #endif
 
-    clock_t StartTime = clock();
+    auto StartTime = globalwindowhandler::GetClock();
     sCopyOfMS = Topic;
     int i;
 
@@ -304,7 +304,7 @@ int iosystem::Menu(std::vector<bitmap*> vBackGround, v2 Pos,
       Backup.LuminanceMaskedBlit(BlitData);
       Buffer.SimpleAlphaBlit(DOUBLE_BUFFER, c++ * 50, 0);
       graphics::BlitDBToScreen();
-      while(clock() - StartTime < 0.05 * CLOCKS_PER_SEC);
+      globalwindowhandler::WaitUntil(StartTime + 50);
       k = READ_KEY();
     }
     else
@@ -335,6 +335,22 @@ int iosystem::Menu(std::vector<bitmap*> vBackGround, v2 Pos,
      case KEY_CONTROLLER_A:
       bReady = true;
       break;
+
+     case KEY_MOUSE_EVENT: {
+        mouseclick mc = globalwindowhandler::GetLastMouseEvent();
+        if(mc.IsMotion)
+        {
+          v2 MPos = mc.pos / graphics::GetScale();
+          int yzero = Pos.Y - CountChars('\r', sMS) * 25;
+          if(MPos.Y > yzero && MPos.Y < yzero + 50 * CountChars('\r', sMS))
+            iSelected = (MPos.Y - yzero) / 50;
+        }
+        else if(mc.btn > 0)
+        {
+          bReady = true;
+        }
+      break;
+     }
 
      default:
       if(k > 0x30 && k < 0x31 + CountChars('\r', sMS)){
