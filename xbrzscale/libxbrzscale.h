@@ -17,7 +17,7 @@
  */
 
 #ifndef _XRBZSCALE_
-#define _XRBZSCALE_
+#define _XBRZSCALE_
 
 #ifndef XBRZLIB_RELATIVEPATHSDL
 #include <SDL_stdinc.h>
