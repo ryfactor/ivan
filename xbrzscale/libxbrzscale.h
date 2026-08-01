@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _XRBZSCALE_
+#ifndef _XBRZSCALE_
 #define _XBRZSCALE_
 
 #ifndef XBRZLIB_RELATIVEPATHSDL
