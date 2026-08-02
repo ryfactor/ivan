@@ -168,18 +168,10 @@ inline festring::festring(cfestring& Str)
 {
   if(OwnsData)
   {
-    if(Data != EmptyString && Size > 0)
-    {
-      if(REFS(Data) < FESTRING_REF_MAX)
-        ++REFS(Data);
-      else
-        CreateOwnData(Str.Data, Str.Size);
-    }
+    if(REFS(Data) < FESTRING_REF_MAX)
+      ++REFS(Data);
     else
-    {
-      // Ensure we have a proper owned allocation with refcount storage
       CreateOwnData(Str.Data, Str.Size);
-    }
   }
 }
 
@@ -193,13 +185,8 @@ inline festring::festring(sizetype N, char Char)
 inline festring::~festring()
 {
   if(OwnsData)
-  {
-    if(Data != EmptyString && Size > 0)
-    {
-      if(!REFS(Data)--)
-        delete [] &REFS(Data);
-    }
-  }
+    if(!REFS(Data)--)
+      delete [] &REFS(Data);
 }
 
 inline bool festring::operator<(cfestring& Str) const
