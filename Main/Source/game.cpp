@@ -5417,6 +5417,9 @@ inputfile& operator>>(inputfile& SaveFile, dangerid& Value)
 
 festring game::GetDataDir()
 {
+#ifdef PORTABLE_BUILD
+  return "./";
+#else
 #ifdef UNIX
 #ifdef MAC_APP
   return "../Resources/data/";
@@ -5427,6 +5430,7 @@ festring game::GetDataDir()
 
 #if defined(WIN32) || defined(__DJGPP__)
   return GetUserDataDir();
+#endif
 #endif
 }
 
