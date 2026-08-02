@@ -20,7 +20,15 @@
 #include "dbgmsgproj.h"
 
 char** festring::IntegerMap = 0;
-cchar* const festring::EmptyString = "";
+//cchar* const festring::EmptyString = "";
+
+struct festring_empty_block {
+  unsigned long ref;
+  char data[1];
+};
+static festring_empty_block festring_empty = { 0, '\0' };
+char const * const festring::EmptyString = festring_empty.data;
+
 festring::csizetype festring::NPos = festring::sizetype(-1);
 
 char Capitalize(char Char)
